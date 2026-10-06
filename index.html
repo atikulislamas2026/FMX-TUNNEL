@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FMX TUNNEL VPN - Premium Store</title>
+    <!-- Font Awesome (for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Swiper.js CSS (for automatic screenshot slider) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    
+    <style>
+        /* --- বেসিক সেটআপ এবং আকর্ষণীয় ব্যাকগ্রাউন্ড গ্রেডিয়েন্ট --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            background: linear-gradient(135deg, #f4f7f6 0%, #e8eaed 100%); /* আকর্ষণীয় ব্যাকগ্রাউন্ড */
+            color: #202124;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* --- প্রমোশন বার --- */
+        .promo-bar {
+            background: #001ea1;
+            color: white;
+            padding: 10px 0;
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            border-bottom: 2px solid #fffb00;
+        }
+
+        /* --- মেইন কন্টেইনার --- */
+        .container {
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px 16px;
+            background: #ffffff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* হালকা শ্যাডো */
+        }
+
+        /* --- অ্যাপ হেডার এবং লোগো অ্যানিমেশন --- */
+        .app-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .app-logo {
+            width: 80px;
+            height: 80px;
+            min-width: 80px;
+            border-radius: 18px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            /* অ্যাপ লোগো জুম-ইন/আউট অ্যানিমেশন */
+            animation: logoZoom 4s ease-in-out infinite; 
+        }
+
+        /* লোগো অ্যানিমেশন কীফ্রেম */
+        @keyframes logoZoom {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); } /* মাঝখানে ১০% বড় হবে */
+        }
+
+        .app-details h1 {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+            color: #202124;
+        }
+
+        .dev-link {
+            color: #01875f;
+            font-size: 14px;
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        /* --- স্ট্যাটাস সেকশন --- */
+        .stats-wrapper {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            padding: 12px 0;
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .stat-column {
+            flex: 1;
+            text-align: center;
+            border-right: 1px solid #e8eaed;
+        }
+
+        .stat-column:last-child { border-right: none; }
+
+        .stat-value {
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: #5f6368;
+            margin-top: 4px;
+        }
+
+        /* --- ইনস্টল বাটন এবং হোভার ইফেক্ট --- */
+        .install-btn {
+            width: 100%;
+            background-color: #144cc5;
+            color: #ffffff;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(20, 76, 197, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s; /* হোভার ইফেক্ট ট্রানজিশন */
+        }
+
+        .install-btn:hover {
+            transform: scale(1.03); /* হালকা বড় হবে */
+            box-shadow: 0 6px 15px rgba(20, 76, 197, 0.4);
+        }
+
+        /* --- স্ক্রিনশট স্লাইডার (Swiper.js এর জন্য ডিজাইন) --- */
+        h3.section-title {
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            color: #202124;
+        }
+
+        .swiper {
+            width: 100%;
+            padding: 10px 0 30px 0; /* প্যাডিং ফর পেজিনেশন */
+        }
+
+        .swiper-slide {
+            width: auto; /* কন্টেন্ট অনুযায়ী প্রস্থ */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            height: 250px; /* উচ্চতা একটু বাড়ানো হয়েছে */
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Swiper পেজিনেশন ডট কালার */
+        .swiper-pagination-bullet-active {
+            background: #144cc5 !important;
+        }
+
+        /* --- সৌদি ডাটা প্যাকেজ সেকশন --- */
+        .system-title {
+            background: #144cc5;
+            color: white;
+            padding: 15px;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: 900;
+            margin: 20px 0 40px 0;
+            text-transform: uppercase;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .system-title:hover {
+            background: #0d3896;
+            transform: scale(1.02); /* হালকা বড় হবে */
+        }
+
+        .package-link {
+            text-decoration: none;
+            display: block;
+        }
+
+        /* --- ডাউনলোডিং লোডার --- */
+        .loader {
+            display: none;
+            width: 18px; height: 18px;
+            border: 3px solid #ffffff;
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            animation: rotation 1s linear infinite;
+        }
+        @keyframes rotation { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+    <!-- প্রমোশন বার -->
+    <div class="promo-bar">
+        <marquee scrollamount="6">🔥FNF Tunnel BD - HIGH-SPEED | Premium VPN Connection 🔥</marquee>
+    </div>
+
+    <!-- মেইন কন্টেইনার -->
+    <div class="container">
+        <!-- অ্যাপ হেডার এবং লোগো -->
+        <div class="app-header">
+            <img src="logo.jpeg" alt="FNF Tunnel BD Logo" class="app-logo">
+            <div class="app-details">
+                <h1>FNF Tunnel BD</h1>
+                <div class="dev-link">Atikul Islam</div>
+                <div style="font-size: 12px; color: #5f6368;">Official Version 2.0 • 89.4 MB</div>
+            </div>
+        </div>
+
+        <!-- স্ট্যাটাস সেকশন -->
+        <div class="stats-wrapper">
+            <div class="stat-column">
+                <div class="stat-value">4.9 <i class="fas fa-star" style="font-size: 10px; color: #f4b400;"></i></div>
+                <div class="stat-label">Reviews</div>
+            </div>
+            <div class="stat-column">
+                <div class="stat-value">1M+</div>
+                <div class="stat-label">Downloads</div>
+            </div>
+            <div class="stat-column">
+                <div class="stat-value">3+</div>
+                <div class="stat-label">Rated for</div>
+            </div>
+        </div>
+
+        <!-- ইনস্টল বাটন -->
+        <button id="mainBtn" class="install-btn">
+            <div class="loader" id="loader"></div>
+            <span id="btnTxt">INSTALL APP</span>
+        </button>
+
+        <!-- অ্যাপ স্ক্রিনশট অটোমেটিক স্লাইডার -->
+        <h3 class="section-title">App Screenshots</h3>
+        
+        <!-- Swiper.js Container -->
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="ss1.jpeg" alt="SS1"></div>
+                <div class="swiper-slide"><img src="ss2.jpeg" alt="SS2"></div>
+                <div class="swiper-slide"><img src="ss3.jpeg" alt="SS3"></div>
+                <div class="swiper-slide"><img src="ss4.jpeg" alt="SS3"></div>
+                <!-- আপনি চাইলে আরও স্ক্রিনশট এখানে যোগ করতে পারেন -->
+            </div>
+            <!-- Swiper পেজিনেশন ڈٹس -->
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <!-- টেলিগ্রাম চ্যানেলের লিংক -->
+        <a href="https://t.me/fmxtunnelvpn" target="_blank" class="package-link">
+            <div class="system-title">
+                Join Our Telegram Group
+                <i class="fab fa-telegram-plane" style="margin-left: 8px;"></i> <!-- টেলিগ্রাম আইকন -->
+            </div>
+        </a>
+    </div>
+
+    <!-- Swiper.js JavaScript (for automatic screenshot slider) -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        // --- অ্যাপ স্ক্রিনশট অটোমেটিক স্লাইডার কনফিগারেশন ---
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: "auto",      // স্লাইডের প্রস্থ কন্টেন্ট অনুযায়ী হবে
+            spaceBetween: 15,          // স্লাইডগুলোর মাঝের দূরত্ব
+            centeredSlides: true,      // অ্যাক্টিভ স্লাইড মাঝখানে থাকবে
+            loop: true,                 // শেষ স্লাইডের পর আবার প্রথম থেকে শুরু হবে
+            autoplay: {
+                delay: 3000,            // প্রতি ৩ সেকেন্ড পর পর স্লাইড হবে
+                disableOnInteraction: false, // ব্যবহারকারী স্লাইড করার পরও অটো-প্লে সচল থাকবে
+            },
+            pagination: {
+                el: ".swiper-pagination", // পেজিনেশন ڈٹس দেখাবে
+                clickable: true,
+            },
+        });
+
+        // --- ইনস্টল বাটন এবং অটোমেটিক ডাউনলোড কনফিগারেশন ---
+        const mainBtn = document.getElementById('mainBtn');
+        const loader = document.getElementById('loader');
+        const btnTxt = document.getElementById('btnTxt');
+
+        // আপনার অ্যাপের ডাউনলোড লিংক
+        const apkUrl = "https://play.google.com/store/apps/details?id=noob.fmxtunnel.vpn";
+
+        mainBtn.addEventListener('click', () => {
+            // বোতামটি নিষ্ক্রিয় করা এবং লোডার দেখানো
+            loader.style.display = 'block';
+            btnTxt.innerText = 'Connecting...';
+            mainBtn.disabled = true;
+
+            // ডাউনলোডের জন্য একটি অস্থায়ী লিংক তৈরি
+            const link = document.createElement('a');
+            link.href = apkUrl;
+            // এই 'download' অ্যাট্রিবিউটটি কাজ করবে যদি লিংকটি একটি সরাসরি ফাইল লিংক হয়
+            link.download = "FNF_Tunnel_BD_Premium.apk";
+            
+            // ১.৫ সেকেন্ড পর ডাউনলোড শুরু করার চেষ্টা
+            setTimeout(() => {
+                link.click();
+                btnTxt.innerText = 'Downloading...';
+                
+                // ৪ সেকেন্ড পর বোতামটি আগের অবস্থায় ফিরিয়ে আনা
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    btnTxt.innerText = 'INSTALL APP';
+                    mainBtn.disabled = false;
+                }, 4000);
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
